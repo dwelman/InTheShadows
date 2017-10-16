@@ -10,6 +10,7 @@ public class RotationObject : MonoBehaviour
 	public float rotationXScrambleMax = 0f;
 	public float rotationYScrambleMin = 25f;
 	public float rotationYScrambleMax = 125f;
+    public GameObject axes;
 
 	Vector3 victoryPosition;
 	Quaternion startingRotation;

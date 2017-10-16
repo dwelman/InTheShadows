@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 	void Awake()
 	{
 		currentRotationObject = rotationObjects[0];
-	}
+        currentRotationObject.axes.SetActive(true);
+    }
 
 	void Update()
 	{
@@ -27,7 +28,6 @@ public class GameManager : MonoBehaviour
 		{
 			if (Input.GetMouseButton(0))
 			{
-
                 currentRotationObject.transform.Rotate(rotationSpeed * mouseDir.y * Time.deltaTime, 0, 0, Space.Self);
 			}
 		}
@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
 		{
 			currentObjectIndex = 0;
 		}
-		currentRotationObject = rotationObjects[currentObjectIndex];
-	}
+        currentRotationObject.axes.SetActive(false);
+        currentRotationObject = rotationObjects[currentObjectIndex];
+        currentRotationObject.axes.SetActive(true);
+    }
 }
