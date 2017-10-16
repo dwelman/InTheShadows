@@ -17,6 +17,7 @@ public class RotationObject : MonoBehaviour
 
 	void Awake()
 	{
+		Random.InitState(42);
 		SetVictoryPosition();
 		SetVictoryRotation();
 		ScrambleRotation();
