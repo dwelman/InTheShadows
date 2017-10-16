@@ -3,15 +3,20 @@ guid: 321ea6af580464be883453b06d0481b9
 timeCreated: 1508132829
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
     100002: Th_i_re001
+    100004: default
     400000: //RootNode
     400002: Th_i_re001
+    400004: default
     2300000: Th_i_re001
+    2300002: default
     3300000: Th_i_re001
+    3300002: default
     4300000: Th_i_re001
+    4300002: default
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,6 +39,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -41,7 +47,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -57,6 +66,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

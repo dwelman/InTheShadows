@@ -27,14 +27,15 @@ public class GameManager : MonoBehaviour
 		{
 			if (Input.GetMouseButton(0))
 			{
-				currentRotationObject.transform.RotateAround(currentRotationObject.transform.position, transform.right, rotationSpeed * mouseDir.y * Time.deltaTime);
+
+                currentRotationObject.transform.Rotate(rotationSpeed * mouseDir.y * Time.deltaTime, 0, 0, Space.Self);
 			}
 		}
 		else if (levelControlType >= LevelControlTypes.Horizontal)
 		{
 			if (Input.GetMouseButton(0))
 			{
-				currentRotationObject.transform.RotateAround(currentRotationObject.transform.position, transform.up, rotationSpeed * mouseDir.x * Time.deltaTime * -1);
+				currentRotationObject.transform.RotateAround(currentRotationObject.transform.position, new Vector3(0, 1, 0), rotationSpeed * mouseDir.x * Time.deltaTime * -1);
 			}
 		}
 
