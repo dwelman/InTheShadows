@@ -11,11 +11,12 @@ public class OnPlayClick : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))
 		{ // if left button pressed...
 			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
+			RaycastHit  hit;
+
 			if (Physics.Raycast(ray, out hit))
 			{
-				Debug.Log ("hi");
-			}
+                Debug.Log(hit.transform.gameObject.name.ToString());
+            }
 		}
 	}
 }
