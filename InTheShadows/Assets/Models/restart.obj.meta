@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 7eabe420e75d94d378c0fc7342387d3c
-timeCreated: 1508132837
+guid: 5dc9ebfdd47a3f140af2fd94d45fd467
+timeCreated: 1508240097
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Circle01
+    100000: default
     100002: //RootNode
-    400000: Circle01
+    400000: default
     400002: //RootNode
-    2300000: Circle01
-    3300000: Circle01
-    4300000: Circle01
+    2300000: default
+    3300000: default
+    4300000: default
   materials:
     importMaterials: 1
     materialName: 0
@@ -42,10 +42,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,7 +61,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
