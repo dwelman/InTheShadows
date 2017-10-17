@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ContinuousRotation : MonoBehaviour
 {
+	public Vector3 axis;
     public float rotationSpeed = 180;
 
     private void Update()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0, Space.Self);
+        transform.Rotate(axis * rotationSpeed * Time.deltaTime, Space.Self);
     }
 }
