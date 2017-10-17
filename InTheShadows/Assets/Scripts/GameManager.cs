@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public LevelControlTypes levelControlType;
 	public List<RotationObject> rotationObjects;
 	public float rotationSpeed = 30f;
+	public RotationObject objectOriginPoint;
 
 	Vector3 lastMousePos;
 	RotationObject currentRotationObject;
@@ -24,7 +25,22 @@ public class GameManager : MonoBehaviour
 	{
 		Vector3 mousePos = Input.mousePosition;
 		Vector3 mouseDir = mousePos - lastMousePos;
-		if (levelControlType >= LevelControlTypes.HorizontalAndVertical && Input.GetKey(KeyCode.LeftControl))
+
+		currentRotationObject.axes.SetActive(true);
+		if (objectOriginPoint)
+		{
+			objectOriginPoint.axes.SetActive(false);
+		}
+		if (levelControlType >= LevelControlTypes.MultipleObjects && Input.GetKey(KeyCode.LeftShift))
+		{
+			currentRotationObject.axes.SetActive(false);
+			objectOriginPoint.axes.SetActive(true);
+			if (Input.GetMouseButton(0))
+			{
+				objectOriginPoint.transform.RotateAround(objectOriginPoint.transform.position, new Vector3(0, 1, 0), rotationSpeed * mouseDir.x * Time.deltaTime * -1);
+			}
+		}
+		else if (levelControlType >= LevelControlTypes.HorizontalAndVertical && Input.GetKey(KeyCode.LeftControl))
 		{
 			if (Input.GetMouseButton(0))
 			{
@@ -49,6 +65,10 @@ public class GameManager : MonoBehaviour
 		}
 
 		bool levelVictory = true;
+		if (objectOriginPoint)
+		{
+			levelVictory = objectOriginPoint.CheckVictoryCondition();
+		}
 		for (int i = 0; i < rotationObjects.Count; i++)
 		{
 			if (!rotationObjects[i].CheckVictoryCondition())

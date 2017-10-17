@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RotationObject : MonoBehaviour
 {
-	public float positionVariance = 0.0005f;
     public float rotationVariance = 2f;
 	public float rotationXScrambleMin = 0f;
 	public float rotationXScrambleMax = 0f;
@@ -54,6 +53,8 @@ public class RotationObject : MonoBehaviour
         //Debug.Log(Quaternion.Angle(rot, victoryRotation));
 		if (Quaternion.Angle(rot, victoryRotation) <= rotationVariance && Quaternion.Angle(rot, victoryRotation) >= -rotationVariance)
 		{
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, victoryRotation, 10 * Time.deltaTime);
+			Debug.Log(transform.name);
 			return (true);
 		}
 		return (false);
