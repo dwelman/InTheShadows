@@ -36,5 +36,12 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            play.MoveToStart();
+            test.MoveToStart();
+            quit.MoveToStart();
+
+        }
     }
 }

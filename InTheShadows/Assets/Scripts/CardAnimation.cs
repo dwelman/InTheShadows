@@ -39,6 +39,12 @@ public class CardAnimation : MonoBehaviour
         animating = true;
     }
 
+    public void MoveToStart()
+    {
+        animState = AnimState.TOSTART;
+        animating = true;
+    }
+
     void StepToStart()
     {
         float step = moveSpeed * Time.deltaTime;
