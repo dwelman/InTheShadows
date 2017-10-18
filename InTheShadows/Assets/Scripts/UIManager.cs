@@ -6,17 +6,51 @@ public class UIManager : MonoBehaviour
 {
     public Camera   camera;
     bool            animating;
-    public CardAnimation   play, test, quit;
+    public CardAnimation    play, test, quit,
+                            levels, arrow, ivory;
 
-   
+
     enum State { MAIN, LEVELS, INGAME}
     State state;
 	// Use this for initialization
 	void Start ()
     {
         state = State.MAIN;
-	}
-	
+        ivory.transform.position = ivory.endPos;
+        arrow.transform.position = arrow.endPos;
+        levels.transform.position = levels.endPos;
+  
+    }
+
+
+    void UpdateUIToActiveState()
+    {
+        switch (state)
+        {
+            case State.LEVELS :
+                {
+                    play.Yank();
+                    test.Yank();
+                    quit.Yank();
+                    ivory.MoveToStart();
+                    arrow.MoveToStart();
+                    levels.MoveToStart();
+                    break;
+                }
+            case State.MAIN :
+                {
+                    play.MoveToStart();
+                    test.MoveToStart();
+                    quit.MoveToStart();
+
+                    ivory.MoveToEnd();
+                    arrow.MoveToEnd();
+                    levels.MoveToEnd();
+                    break;
+                }
+        }
+
+    }
 	// Update is called once per frame
 	void Update ()
     {
@@ -30,9 +64,12 @@ public class UIManager : MonoBehaviour
                 if (hit.transform.CompareTag("PlayBtn"))
                 {
                     state = State.LEVELS;
-                    play.Yank();
-                    test.Yank();
-                    quit.Yank();
+                    UpdateUIToActiveState();
+                }
+                if (hit.transform.CompareTag("BackBtn"))
+                {
+                    state = State.MAIN;
+                    UpdateUIToActiveState();
                 }
             }
         }
@@ -41,7 +78,6 @@ public class UIManager : MonoBehaviour
             play.MoveToStart();
             test.MoveToStart();
             quit.MoveToStart();
-
         }
     }
 }
