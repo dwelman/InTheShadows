@@ -24,7 +24,7 @@ public class CardAnimation : MonoBehaviour
 	void Start ()
     {
         animState = AnimState.STATIC;
-        start = transform.position;
+        //start = transform.position;
     }
 
     public void Yank()

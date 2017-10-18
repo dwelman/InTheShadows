@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,12 +17,11 @@ public class UIManager : MonoBehaviour
 	void Start ()
     {
         state = State.MAIN;
+
         ivory.transform.position = ivory.endPos;
         arrow.transform.position = arrow.endPos;
         levels.transform.position = levels.endPos;
-  
     }
-
 
     void UpdateUIToActiveState()
     {
@@ -71,13 +71,21 @@ public class UIManager : MonoBehaviour
                     state = State.MAIN;
                     UpdateUIToActiveState();
                 }
+                if (hit.transform.CompareTag("TestBtn"))
+                {
+                    state = State.LEVELS;
+                    UpdateUIToActiveState();
+                }
+                if (hit.transform.CompareTag("Lv1"))
+                {
+                    SceneManager.LoadScene(SceneManager.GetSceneByName("Level1").buildIndex, LoadSceneMode.Additive);
+                }
             }
         }
         if (Input.GetMouseButtonDown(1))
         {
-            play.MoveToStart();
-            test.MoveToStart();
-            quit.MoveToStart();
+            state = State.MAIN;
+            UpdateUIToActiveState();
         }
     }
 }
