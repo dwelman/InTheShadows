@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
                 }
                 if (hit.transform.CompareTag("Lv1"))
                 {
-                    SceneManager.LoadScene(SceneManager.GetSceneByName("Level1").buildIndex, LoadSceneMode.Additive);
+					SceneManager.LoadScene("Level1");
                 }
             }
         }
