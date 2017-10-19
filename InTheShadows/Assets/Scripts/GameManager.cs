@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 	public float rotationSpeed = 30f;
 	public RotationObject objectOriginPoint;
 	public int level;
+    public GameObject confetti;
+    public AudioClip party;
 
 	Vector3 lastMousePos;
 	RotationObject currentRotationObject;
@@ -92,7 +94,18 @@ public class GameManager : MonoBehaviour
         if (levelVictory && !levelComplete)
         {
             levelComplete = true;
-            //Call victory
+            Vector3 pos;
+            if (objectOriginPoint)
+            {
+                pos = objectOriginPoint.transform.position;
+            }
+            else
+            {
+                pos = currentRotationObject.transform.position;
+            }
+            GetComponent<AudioSource>().PlayOneShot(party);
+            GameObject.Instantiate(confetti, pos, confetti.transform.rotation);
+            confetti.transform.position = pos;
 			StartCoroutine("ReturnToLevelSelect");
 			PlayerPrefs.SetInt("level", level);
         }
