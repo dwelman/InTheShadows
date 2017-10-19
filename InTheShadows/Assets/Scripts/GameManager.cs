@@ -103,7 +103,10 @@ public class GameManager : MonoBehaviour
             {
                 pos = currentRotationObject.transform.position;
             }
-            GetComponent<AudioSource>().PlayOneShot(party);
+            if (PlayerPrefs.GetInt("sound_on") == 1)
+            {
+                GetComponent<AudioSource>().PlayOneShot(party);
+            }
             GameObject.Instantiate(confetti, pos, confetti.transform.rotation);
             confetti.transform.position = pos;
 			StartCoroutine("ReturnToLevelSelect");
