@@ -8,8 +8,9 @@ public class UIManager : MonoBehaviour
     public Camera   camera;
     bool            animating;
     public CardAnimation    play, test, quit,
-                            levels, arrow, ivory;
-
+                            levels, arrow, 
+							ivory, rooibos, home, mol;
+	int level;
 
     enum State { MAIN, LEVELS, INGAME}
     State state;
@@ -19,8 +20,13 @@ public class UIManager : MonoBehaviour
         state = State.MAIN;
 
         ivory.transform.position = ivory.endPos;
+		rooibos.transform.position = rooibos.endPos;
+		home.transform.position = home.endPos;
+		mol.transform.position = mol.endPos;
+
         arrow.transform.position = arrow.endPos;
         levels.transform.position = levels.endPos;
+		level = PlayerPrefs.GetInt ("level");
     }
 
     void UpdateUIToActiveState()
@@ -32,7 +38,15 @@ public class UIManager : MonoBehaviour
                     play.Yank();
                     test.Yank();
                     quit.Yank();
-                    ivory.MoveToStart();
+
+					ivory.MoveToStart();
+					if (level > 1)
+						rooibos.MoveToStart();
+					if (level > 2)
+						home.MoveToStart();
+					if (level > 3)
+						mol.MoveToStart ();
+
                     arrow.MoveToStart();
                     levels.MoveToStart();
                     break;
@@ -44,6 +58,10 @@ public class UIManager : MonoBehaviour
                     quit.MoveToStart();
 
                     ivory.MoveToEnd();
+					rooibos.MoveToEnd();
+					home.MoveToEnd();
+					mol.MoveToEnd ();
+
                     arrow.MoveToEnd();
                     levels.MoveToEnd();
                     break;
@@ -65,6 +83,7 @@ public class UIManager : MonoBehaviour
                 {
                     state = State.LEVELS;
                     UpdateUIToActiveState();
+					level = PlayerPrefs.GetInt ("level");
                 }
                 if (hit.transform.CompareTag("BackBtn"))
                 {
@@ -73,6 +92,7 @@ public class UIManager : MonoBehaviour
                 }
                 if (hit.transform.CompareTag("TestBtn"))
                 {
+					level = 4;
                     state = State.LEVELS;
                     UpdateUIToActiveState();
                 }
@@ -80,6 +100,18 @@ public class UIManager : MonoBehaviour
                 {
 					SceneManager.LoadScene("Level1");
                 }
+				if (hit.transform.CompareTag("Lv2"))
+				{
+					SceneManager.LoadScene("Level2");
+				}
+				if (hit.transform.CompareTag("Lv3"))
+				{
+					SceneManager.LoadScene("Level3");
+				}
+				if (hit.transform.CompareTag("Lv4"))
+				{
+					SceneManager.LoadScene("Level4");
+				}
             }
         }
         if (Input.GetMouseButtonDown(1))
