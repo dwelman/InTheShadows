@@ -40,11 +40,11 @@ public class UIManager : MonoBehaviour
                     quit.Yank();
 
 					ivory.MoveToStart();
-					if (level > 1)
+					if (level > 0)
 						rooibos.MoveToStart();
-					if (level > 2)
+					if (level > 1)
 						home.MoveToStart();
-					if (level > 3)
+					if (level > 2)
 						mol.MoveToStart ();
 
                     arrow.MoveToStart();

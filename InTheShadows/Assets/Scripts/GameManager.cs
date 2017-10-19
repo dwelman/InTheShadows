@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator ReturnToLevelSelect()
 	{
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(2.5f);
 		SceneManager.LoadScene("mainMenu");
 	}
 }
