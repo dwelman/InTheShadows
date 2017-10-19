@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 	public List<RotationObject> rotationObjects;
 	public float rotationSpeed = 30f;
 	public RotationObject objectOriginPoint;
+	public int level;
 
 	Vector3 lastMousePos;
 	RotationObject currentRotationObject;
@@ -87,10 +89,12 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        if (levelVictory)
+        if (levelVictory && !levelComplete)
         {
             levelComplete = true;
-            Debug.Log("Level complete");
+            //Call victory
+			StartCoroutine("ReturnToLevelSelect");
+			PlayerPrefs.SetInt("level", level);
         }
 		lastMousePos = mousePos;
 	}
@@ -106,4 +110,10 @@ public class GameManager : MonoBehaviour
         currentRotationObject = rotationObjects[currentObjectIndex];
         currentRotationObject.axes.SetActive(true);
     }
+
+	IEnumerator ReturnToLevelSelect()
+	{
+		yield return new WaitForSeconds(5f);
+		SceneManager.LoadScene("mainMenu");
+	}
 }
