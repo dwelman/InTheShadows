@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
                             levels, arrow, 
 							ivory, rooibos, home, mol;
 	int level;
+	public Material	completeMat;
+	public Material	defaultMat;
 
     enum State { MAIN, LEVELS, INGAME}
     State state;
@@ -40,13 +42,31 @@ public class UIManager : MonoBehaviour
                     quit.Yank();
 
 					ivory.MoveToStart();
-					if (level > 0)
-						rooibos.MoveToStart();
-					if (level > 1)
-						home.MoveToStart();
-					if (level > 2)
-						mol.MoveToStart ();
+					ivory.GetComponent<Renderer> ().material = defaultMat;
+					rooibos.GetComponent<Renderer> ().material = defaultMat;
+					home.GetComponent<Renderer> ().material = defaultMat;	
+					mol.GetComponent<Renderer> ().material = defaultMat;
 
+					if (level > 0)
+					{
+						rooibos.MoveToStart ();
+					ivory.GetComponent<Renderer> ().material = completeMat;
+					}
+					if (level > 1)
+					{
+						home.MoveToStart ();
+					rooibos.GetComponent<Renderer> ().material = completeMat;
+						
+					}
+					if (level > 2)
+					{
+						mol.MoveToStart ();
+					home.GetComponent<Renderer> ().material = completeMat;
+					}
+					if (level > 3)
+					{
+					mol.GetComponent<Renderer> ().material = completeMat;
+					}
                     arrow.MoveToStart();
                     levels.MoveToStart();
                     break;
@@ -87,6 +107,7 @@ public class UIManager : MonoBehaviour
                 }
                 if (hit.transform.CompareTag("BackBtn"))
                 {
+					
                     state = State.MAIN;
                     UpdateUIToActiveState();
                 }
