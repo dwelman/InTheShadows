@@ -117,6 +117,10 @@ public class UIManager : MonoBehaviour
                     state = State.LEVELS;
                     UpdateUIToActiveState();
                 }
+				if (hit.transform.CompareTag("QuitBtn"))
+				{
+					Application.Quit ();
+				}
                 if (hit.transform.CompareTag("Lv1"))
                 {
 					SceneManager.LoadScene("Level1");
