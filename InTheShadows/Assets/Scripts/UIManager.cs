@@ -102,8 +102,8 @@ public class UIManager : MonoBehaviour
                 if (hit.transform.CompareTag("PlayBtn"))
                 {
                     state = State.LEVELS;
-                    UpdateUIToActiveState();
 					level = PlayerPrefs.GetInt ("level");
+                    UpdateUIToActiveState();
                 }
                 if (hit.transform.CompareTag("BackBtn"))
                 {
