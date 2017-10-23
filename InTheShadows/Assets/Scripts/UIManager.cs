@@ -144,5 +144,9 @@ public class UIManager : MonoBehaviour
             state = State.MAIN;
             UpdateUIToActiveState();
         }
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			PlayerPrefs.DeleteAll();
+		}
     }
 }
