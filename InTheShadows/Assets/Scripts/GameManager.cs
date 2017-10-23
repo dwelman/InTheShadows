@@ -112,6 +112,10 @@ public class GameManager : MonoBehaviour
 			StartCoroutine("ReturnToLevelSelect");
 			PlayerPrefs.SetInt("level", level);
         }
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			SceneManager.LoadScene("mainMenu");
+		}
 		lastMousePos = mousePos;
 	}
 
